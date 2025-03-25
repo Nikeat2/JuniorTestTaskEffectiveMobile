@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">onboarding</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_text_first_line">Тысячи курсов</string>
+    <string name="title_text_second_line">в одном месте</string>
+    <string name="traffic">Трафик</string>
+    <string name="_1c_administring">1С администирирование</string>
+    <string name="rabbitmq">RabbitMQ</string>
+    <string name="content_marketing">Контент маркетинг</string>
+    <string name="b2b_marketing">B2B маркетинг</string>
+    <string name="google_analytics">Google Аналитика</string>
+    <string name="ux">UX исследователь</string>
+    <string name="web_analytics">Веб-аналитика</string>
+    <string name="big_data">Big Data</string>
+    <string name="game_design">Геймдизайн</string>
+    <string name="web_design">Веб-дизайн</string>
+    <string name="cinema_4d">Cinema 4D</string>
+    <string name="prompt_enginerring">Промпт инженеринг</string>
+    <string name="webflow">Webflow</string>
+    <string name="three_js">Three.js</string>
+    <string name="parsing">Парсинг</string>
+    <string name="python">Python-разработка</string>
+</resources>

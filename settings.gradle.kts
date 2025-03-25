@@ -21,4 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "Junior TestTask EffectiveMobile"
 include(":app")
- 
+include(":login")
+include(":onboarding")
+include(":mainscreen")
+include(":data")
+include(":domain")
+include(":core-ui")

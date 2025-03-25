@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark"
+    tools:context=".OnBoardingFragment">
+
+    <TextView
+        android:id="@+id/titleFirstLineTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:letterSpacing="0"
+        android:text="@string/title_text_first_line"
+        android:textAlignment="center"
+        android:textColor="@color/whiteText"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleSecondLineTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_text_second_line"
+        android:textColor="@color/whiteText"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleFirstLineTextView" />
+
+    <HorizontalScrollView
+        android:id="@+id/buttonsScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleSecondLineTextView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/_1c_administring"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/green"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:rotation="-15"
+                    android:text="@string/rabbitmq"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/traffic"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/content_marketing"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/b2b_marketing"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/google_analytics"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/ux"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/web_analytics"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/green"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:rotation="15"
+                    android:text="@string/big_data"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/game_design"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/web_design"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/cinema_4d"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/prompt_enginerring"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/webflow"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/green"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:rotation="-15"
+                    android:text="@string/three_js"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/parsing"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:backgroundTint="@color/glass"
+                    android:letterSpacing="0.1"
+                    android:padding="20dp"
+                    android:text="@string/python"
+                    android:textAllCaps="false"
+                    android:textColor="@color/whiteText"
+                    android:textSize="14sp"
+                    app:cornerRadius="100dp"
+                    app:elevation="4dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/continueButton"
+        android:layout_width="328dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/green"
+        android:padding="15dp"
+        android:text="Продолжить"
+        android:textAllCaps="false"
+        android:textColor="@color/whiteText"
+        android:textSize="14sp"
+        app:cornerRadius="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonsScrollView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
