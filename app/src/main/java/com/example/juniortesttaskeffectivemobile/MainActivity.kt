@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main, OnBoardingFragment.newInstance(R.id.main)).commit()
+            .replace(R.id.main, OnBoardingFragment.newInstance(R.id.main)).addToBackStack("Activity").commit()
     }
 
 }
