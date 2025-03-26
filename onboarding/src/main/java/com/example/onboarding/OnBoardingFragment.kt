@@ -36,7 +36,7 @@ class OnBoardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.continueButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(containerID ?: 1, LoginFragment.newInstance()).commit()
+                .replace(containerID!!, LoginFragment.newInstance(containerID!!)).addToBackStack("OnBoarding").commit()
         }
     }
 
