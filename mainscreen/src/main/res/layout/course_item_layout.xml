@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:background="@color/darkGray"
+    app:cardBackgroundColor="@color/darkGray"
+    app:cardCornerRadius="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/courseImageView"
+            style="@style/RoundedSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="114dp"
+            android:src="@drawable/cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/favoriteButton"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/matte_background"
+            android:contentDescription="@string/action_button"
+            android:elevation="8dp"
+            android:src="@drawable/favorite_icon_main_screen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/courseRateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/matte_background"
+            android:drawablePadding="2dp"
+            android:paddingHorizontal="2dp"
+            android:paddingVertical="2dp"
+            android:text="4.9"
+            android:textColor="@color/whiteText"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/star_icon"
+            app:layout_constraintBottom_toBottomOf="@id/courseImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/courseStartDate" />
+
+        <TextView
+            android:id="@+id/courseStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/matte_background"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="22 мая 2024"
+            android:textColor="@color/whiteText"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/courseImageView"
+            app:layout_constraintStart_toEndOf="@id/courseRateTextView" />
+
+        <TextView
+            android:id="@+id/courseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="start"
+            android:textColor="@color/whiteText"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseImageView"
+            tools:text="Java-разработчик с нуля" />
+
+        <TextView
+            android:id="@+id/courseText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
+            android:breakStrategy="balanced"
+            android:ellipsize="end"
+            android:hyphenationFrequency="normal"
+            android:maxLines="2"
+            android:textColor="@color/description_color"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseTitle"
+            tools:text="Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании." />
+
+        <TextView
+            android:id="@+id/coursePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/whiteText"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/courseText"
+            tools:text="999 P" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="4dp"
+            android:text="@string/more_details"
+            android:textColor="@color/green"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/coursePrice"
+            app:layout_constraintEnd_toStartOf="@id/btnArrowFurther"
+            app:layout_constraintTop_toBottomOf="@+id/courseText" />
+
+        <ImageView
+            android:id="@+id/btnArrowFurther"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/arrow_further_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/coursePrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

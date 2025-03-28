@@ -50,22 +50,35 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/firstLayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.button.MaterialButton
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/glass"
                     android:letterSpacing="0.1"
                     android:padding="20dp"
                     android:text="@string/_1c_administring"
                     android:textAllCaps="false"
                     android:textColor="@color/whiteText"
                     android:textSize="14sp"
-                    app:cornerRadius="100dp"
-                    app:elevation="4dp" />
+                    app:cardBackgroundColor="@color/glass"
+                    app:cardCornerRadius="100dp"
+                    app:elevation="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.1"
+                        android:padding="20dp"
+                        android:text="@string/_1c_administring"
+                        android:textAllCaps="false"
+                        android:textColor="@color/whiteText"
+                        android:textSize="14sp" />
+
+                </com.google.android.material.card.MaterialCardView>
 
 
                 <com.google.android.material.button.MaterialButton
@@ -99,6 +112,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/secondLayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -146,6 +160,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/thirdLayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -194,6 +209,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/fourthLayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

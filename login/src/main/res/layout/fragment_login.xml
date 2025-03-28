@@ -96,6 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/putPasswordEditText" />
 
     <TextView
+        android:layout_marginEnd="60dp"
         android:id="@+id/haveNoAccountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,10 +109,22 @@
         app:layout_constraintTop_toBottomOf="@+id/btnEnter" />
 
     <TextView
+        android:layout_marginStart="3dp"
+        android:id="@+id/registrationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Регистрация"
+        android:textColor="@color/clickable_text_color"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/haveNoAccountTextView"
+        app:layout_constraintTop_toBottomOf="@+id/btnEnter" />
+
+    <TextView
         android:id="@+id/forgotPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:text="@string/forgot_password"
         android:textColor="@color/clickable_text_color"
         android:textSize="12sp"

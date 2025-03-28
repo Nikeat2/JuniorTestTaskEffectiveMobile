@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.login.databinding.FragmentLoginBinding
-import com.example.mainscreen.MainScreenFragment
+import com.example.mainscreen.homepage.view.MainScreenFragment
 
 const val CONTAINER_ID = "CONTAINER_ID"
 

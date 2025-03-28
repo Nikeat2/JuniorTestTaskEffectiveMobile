@@ -7,6 +7,6 @@
     <string name="example_gmail_com">example@gmail.com</string>
     <string name="password">Пароль</string>
     <string name="input_password">Введите пароль</string>
-    <string name="no_account">Нет аккаунта? Регистрация</string>
+    <string name="no_account">Нет аккаунта?</string>
     <string name="forgot_password">Забыл пароль</string>
 </resources>

@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.fragment.app.FragmentContainerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/activity_layout"
+    android:name="com.example.onboarding.OnBoardingFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    android:clipToPadding="false"
     android:clipChildren="false"
-    tools:context=".MainActivity"
-    android:name="com.example.onboarding.OnBoardingFragment"
-    tools:layout="@layout/fragment_on_boarding">
+    android:background="@color/dark"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="false"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main"
+        android:name="com.example.onboarding.OnBoardingFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        tools:context=".MainActivity"
+        tools:layout="@layout/fragment_on_boarding">
+
+    </androidx.fragment.app.FragmentContainerView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/darkGray"
+        android:fitsSystemWindows="false"
+        android:visibility="gone"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        app:elevation="0dp"
+        app:itemBackground="@drawable/bottom_nav_item_background"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@color/nav_item_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 
-</androidx.fragment.app.FragmentContainerView>
+</androidx.constraintlayout.widget.ConstraintLayout>

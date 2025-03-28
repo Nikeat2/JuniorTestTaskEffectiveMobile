@@ -11,7 +11,7 @@ android {
     defaultConfig {
         //applicationId = "com.example.mainscreen"
         minSdk = 26
-        targetSdk = 35
+        testOptions.targetSdk = 35
         //versionCode = 1
         //versionName = "1.0"
 
@@ -45,8 +45,13 @@ android {
 }
 
 dependencies {
-
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation(project(":domain"))
+    implementation (libs.glide)
     implementation (libs.androidx.fragment.ktx)
+    implementation(project (":data"))
 
     //Dagger
     implementation (libs.dagger)
