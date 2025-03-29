@@ -9,23 +9,21 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.data.retrofit.RetrofitClient
-import com.example.domain.AppRepositoryImpl
+import com.example.data.models.Course
 import com.example.mainscreen.basefragment.BaseFragment
 import com.example.mainscreen.databinding.FragmentMainScreenBinding
 import com.example.mainscreen.homepage.viewmodel.HomePageViewModel
+import com.example.mainscreen.room.OnFavoriteButtonClick
 import kotlinx.coroutines.launch
 
-class MainScreenFragment : BaseFragment() {
-    override fun shouldShowBottomNav() = true
+class MainScreenFragment : BaseFragment(), OnFavoriteButtonClick {
 
     private var _binding: FragmentMainScreenBinding? = null
     private val binding get() = _binding!!
-    private val adapter = CoursesListAdapter()
+    private val viewModel: HomePageViewModel by viewModels { HomePageViewModel.Factory }
+    private val adapter = CoursesListAdapter(this)
 
-    private val viewModel: HomePageViewModel by viewModels()
-    private lateinit var repository: AppRepositoryImpl
-
+    override fun shouldShowBottomNav() = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,11 +40,8 @@ class MainScreenFragment : BaseFragment() {
         binding.toPublishDateTextView.setOnClickListener {
             adapter.submitList(viewModel.sortItemsByDateDescending(adapter.currentList))
         }
-
-        repository = AppRepositoryImpl(RetrofitClient.getInstance(requireContext()).allPersonApi)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
-                viewModel.getResult(repository)
                 viewModel.coursesListState.collect { list ->
                     adapter.submitList(list.toList())
                 }
@@ -54,8 +49,21 @@ class MainScreenFragment : BaseFragment() {
         }
     }
 
+    override fun onButtonClick(course: Course, position: Int) {
+        course.hasLike = !course.hasLike
+        adapter.notifyItemChanged(position)
+        if (course.hasLike) {
+            viewModel.saveACourse(course)
+        } else {
+            viewModel.deleteACourse(course)
+        }
+        viewModel.updateState(adapter.currentList.toList())
+        adapter.submitList(viewModel.coursesListState.value)
+    }
+
     companion object {
         @JvmStatic
         fun newInstance() = MainScreenFragment()
     }
+
 }

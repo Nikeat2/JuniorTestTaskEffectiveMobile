@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationController {
             insets
         }
         setUpBottomNavigation()
-        supportFragmentManager.beginTransaction()
+        if (savedInstanceState == null)supportFragmentManager.beginTransaction()
             .replace(R.id.main, OnBoardingFragment.newInstance(R.id.main))
             .addToBackStack("Activity").commit()
     }
@@ -59,11 +59,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationController {
     }
 
     override fun showBottomNavigation(show: Boolean) {
-        binding.bottomNavigationView.visibility = View.VISIBLE
+        binding.bottomNavigationView.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun navigateTo(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
+        supportFragmentManager.beginTransaction().addToBackStack("Initial navigation fragment")
             .replace(R.id.main, fragment).commit()
     }
 
