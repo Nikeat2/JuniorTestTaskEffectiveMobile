@@ -18,10 +18,7 @@ import javax.inject.Inject
 class FavoriteCoursesViewModel @Inject constructor(
     private val room: CoursesDataBase
 ) : ViewModel() {
-
-
     private var _coursesListState = MutableStateFlow<List<Course>>(emptyList())
-
 
     init {
         getLists()
@@ -40,8 +37,6 @@ class FavoriteCoursesViewModel @Inject constructor(
             room.getCourseDao().deleteACourse(course)
         }
     }
-
-
 
     companion object {
         @Suppress("UNCHECKED_CAST")

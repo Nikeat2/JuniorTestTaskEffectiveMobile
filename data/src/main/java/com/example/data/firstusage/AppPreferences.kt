@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class AppPreferences(private val context: Context) {
+
+
     val sharedPrefs: SharedPreferences = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
 
     companion object {
@@ -21,6 +23,5 @@ class AppPreferences(private val context: Context) {
     fun clearPreferences() {
         sharedPrefs.edit().clear().apply()
     }
-
 
 }

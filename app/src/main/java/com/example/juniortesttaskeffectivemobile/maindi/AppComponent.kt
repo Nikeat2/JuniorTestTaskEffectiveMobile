@@ -17,7 +17,6 @@ interface AppDependencies {
     fun repository(): AppRepository
 }
 
-
 @Component(modules = [AppModule::class])
 interface AppComponent : AppDependencies {
 

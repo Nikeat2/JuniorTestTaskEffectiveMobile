@@ -37,9 +37,6 @@ class FavoriteCoursesFragment : Fragment(), OnFavoriteButtonClick {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 viewModel.coursesListState.collect { data ->
@@ -47,11 +44,6 @@ class FavoriteCoursesFragment : Fragment(), OnFavoriteButtonClick {
                 }
             }
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = FavoriteCoursesFragment()
     }
 
     override fun onButtonClick(course: Course, position: Int) {
@@ -63,4 +55,11 @@ class FavoriteCoursesFragment : Fragment(), OnFavoriteButtonClick {
         adapter.notifyItemChanged(position)
         adapter.submitList(viewModel.coursesListState.value)
     }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = FavoriteCoursesFragment()
+    }
+
+
 }
