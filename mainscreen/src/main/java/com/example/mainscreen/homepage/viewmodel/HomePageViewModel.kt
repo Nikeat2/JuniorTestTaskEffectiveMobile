@@ -3,11 +3,15 @@ package com.example.mainscreen.homepage.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.data.models.Course
 import com.example.data.repository.AppRepository
 import com.example.mainscreen.di.AppProvider
+import com.example.mainscreen.homepage.view.MainScreenFragment
 import com.example.mainscreen.room.CoursesDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -23,15 +27,18 @@ class HomePageViewModel @Inject constructor(
     private val repository: AppRepository,
     private val room: CoursesDataBase
 ) : ViewModel() {
-
+    private var isInitialized = false
 
     private var _coursesListState = MutableStateFlow<List<Course>>(emptyList())
 
-    val coursesListState = _coursesListState.asStateFlow()
-
     init {
-        getResult()
+        if (!isInitialized) {
+            getResult()
+            isInitialized = true
+        }
     }
+
+    val coursesListState = _coursesListState.asStateFlow()
 
     private fun getResult() = runBlocking {
         val res = async { repository.getAllCourses() }
@@ -55,6 +62,7 @@ class HomePageViewModel @Inject constructor(
                 saveACourse(item)
             }
         }
+        println("gang")
         _coursesListState.value = readyList.toList()
     }
 

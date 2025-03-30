@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.example.data.models.Course
 import com.example.mainscreen.basefragment.BaseFragment
 import com.example.mainscreen.databinding.FragmentMainScreenBinding
 import com.example.mainscreen.homepage.viewmodel.HomePageViewModel
+import com.example.mainscreen.homepage.viewmodel.HomePageViewModel_Factory
 import com.example.mainscreen.room.OnFavoriteButtonClick
 import kotlinx.coroutines.launch
 
@@ -20,7 +22,7 @@ class MainScreenFragment : BaseFragment(), OnFavoriteButtonClick {
 
     private var _binding: FragmentMainScreenBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: HomePageViewModel by viewModels { HomePageViewModel.Factory }
+    private lateinit var viewModel: HomePageViewModel
     private val adapter = CoursesListAdapter(this)
 
     override fun shouldShowBottomNav() = true
@@ -31,6 +33,10 @@ class MainScreenFragment : BaseFragment(), OnFavoriteButtonClick {
     ): View {
         _binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         binding.coursesRecyclerView.adapter = adapter
+        viewModel = ViewModelProvider(
+            requireActivity(),
+            HomePageViewModel.Factory
+        )[HomePageViewModel::class.java]
         binding.coursesRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         return binding.root
     }
