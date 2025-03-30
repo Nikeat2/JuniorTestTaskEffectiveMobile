@@ -23,7 +23,6 @@ class OnBoardingFragment : Fragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +35,8 @@ class OnBoardingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.continueButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(containerID!!, LoginFragment.newInstance(containerID!!)).addToBackStack("OnBoarding").commit()
+                .replace(containerID!!, LoginFragment.newInstance(containerID!!))
+                .addToBackStack("OnBoarding").commit()
         }
     }
 

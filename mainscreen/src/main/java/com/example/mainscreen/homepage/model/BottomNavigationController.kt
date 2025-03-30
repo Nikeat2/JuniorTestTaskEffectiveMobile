@@ -4,6 +4,6 @@ import androidx.fragment.app.Fragment
 
 interface BottomNavigationController {
     fun showBottomNavigation(show: Boolean)
-    fun navigateTo(fragment: Fragment)
+    fun navigateTo(fragment: Fragment, tag: String)
     fun setSelectedItem(itemId: Int)
 }

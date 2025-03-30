@@ -44,6 +44,11 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.common)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation (libs.dagger)
     kapt (libs.dagger.compiler)
     implementation (libs.dagger.android)
@@ -54,6 +59,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(project(":data"))
+    implementation(project(":domain"))
     implementation(project(":onboarding"))
     implementation(project(":login"))
     implementation(project(":mainscreen"))

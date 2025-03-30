@@ -107,8 +107,8 @@ class LoginFragment : Fragment() {
     }
 
     private fun navigateToMainScreen() {
+        parentFragmentManager.popBackStack()
         parentFragmentManager.beginTransaction()
-            .addToBackStack("Login")
             .replace(containerID!!, MainScreenFragment.newInstance())
             .commit()
     }

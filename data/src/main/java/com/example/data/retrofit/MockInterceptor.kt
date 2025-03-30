@@ -7,8 +7,9 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Protocol
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.toResponseBody
+import javax.inject.Inject
 
-class MockInterceptor(private val context: Context)
+class MockInterceptor @Inject constructor(private val context: Context)
      : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val originalRequest = chain.request()
