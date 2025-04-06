@@ -10,9 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.data.models.Course
+import com.example.domain.Course
 import com.example.mainscreen.R
-import com.example.mainscreen.room.OnFavoriteButtonClick
+import com.example.data.room.OnFavoriteButtonClick
 import java.text.SimpleDateFormat
 import java.util.Locale
 

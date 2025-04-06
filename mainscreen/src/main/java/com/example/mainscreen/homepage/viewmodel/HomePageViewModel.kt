@@ -3,29 +3,24 @@ package com.example.mainscreen.homepage.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
-import androidx.lifecycle.ViewModelStore
-import androidx.lifecycle.ViewModelStoreOwner
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.data.models.Course
-import com.example.data.repository.AppRepository
+import com.example.domain.AppRepository
+import com.example.domain.Course
 import com.example.mainscreen.di.AppProvider
-import com.example.mainscreen.homepage.view.MainScreenFragment
-import com.example.mainscreen.room.CoursesDataBase
+import com.example.domain.FavoriteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.Locale
 import javax.inject.Inject
 
 class HomePageViewModel @Inject constructor(
     private val repository: AppRepository,
-    private val room: CoursesDataBase
+    private val favoriteRepository: FavoriteRepository
 ) : ViewModel() {
     private var isInitialized = false
 
@@ -40,41 +35,28 @@ class HomePageViewModel @Inject constructor(
 
     val coursesListState = _coursesListState.asStateFlow()
 
-    private fun getResult() = runBlocking {
+    private fun getResult() = viewModelScope.launch {
         val res = async { repository.getAllCourses() }
 
         val newList = res.await()
-        val readyList = newList.courses.map {
-            Course(
-                hasLike = it.hasLike,
-                id = it.id,
-                price = it.price,
-                publishDate = it.publishDate,
-                rate = it.rate,
-                startDate = it.startDate,
-                text = it.text,
-                title = it.title
-            )
-
-        }
-        for (item in readyList) {
+        for (item in newList) {
             if (item.hasLike) {
                 saveACourse(item)
             }
         }
-        println("gang")
-        _coursesListState.value = readyList.toList()
+        _coursesListState.value = newList.toList()
     }
+
 
     fun saveACourse(course: Course) {
         viewModelScope.launch(Dispatchers.IO) {
-            room.getCourseDao().insertACourse(course)
+            favoriteRepository.addACourse(course)
         }
     }
 
     fun deleteACourse(course: Course) {
         viewModelScope.launch(Dispatchers.IO) {
-            room.getCourseDao().deleteACourse(course)
+            favoriteRepository.deleteACourse(course)
         }
     }
 
@@ -98,7 +80,7 @@ class HomePageViewModel @Inject constructor(
                 extras: CreationExtras
             ): T {
                 val appProvider = checkNotNull(extras[APPLICATION_KEY]) as AppProvider
-                return HomePageViewModel(appProvider.appRepository, appProvider.room) as T
+                return HomePageViewModel(appProvider.appRepository, appProvider.favoriteRepository) as T
             }
         }
     }

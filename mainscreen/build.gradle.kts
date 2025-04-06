@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.android)
-    id ("kotlin-kapt")
+    id("kotlin-kapt")
 }
 
 android {
@@ -47,18 +47,18 @@ android {
 dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation(project(":domain"))
-    implementation (libs.glide)
-    implementation (libs.androidx.fragment.ktx)
-    implementation(project (":data"))
+    implementation(libs.glide)
+    implementation(libs.androidx.fragment.ktx)
+    api(project(":data"))
 
     //Dagger
-    implementation (libs.dagger)
-    kapt (libs.dagger.compiler)
-    implementation (libs.dagger.android)
-    implementation (libs.dagger.android.support)
-    kapt (libs.dagger.android.processor)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+    implementation(libs.dagger.android)
+    implementation(libs.dagger.android.support)
+    kapt(libs.dagger.android.processor)
 
     //Room
     implementation(libs.androidx.room.runtime)

@@ -1,14 +1,14 @@
 package com.example.juniortesttaskeffectivemobile.maindi
 
 import android.content.Context
-import com.example.data.repository.AppRepository
+import com.example.data.mappers.fromCourseDtoToCourse.MapperFromCourseDtoToCourse
+import com.example.data.mappers.fromCourseDtoToCourse.MapperFromCourseDtoToCourseImpl
+import com.example.data.repository.AppRepositoryImpl
 import com.example.data.retrofit.Api
 import com.example.data.retrofit.BASE_URL
 import com.example.data.retrofit.MockInterceptor
 import com.example.data.retrofit.RetrofitClient
-import com.example.domain.AppRepositoryImpl
-import com.example.mainscreen.room.CoursesDataBase
-import com.example.mainscreen.room.CoursesDataBase_Impl
+import com.example.domain.AppRepository
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -45,13 +45,18 @@ class AppModule(private val context: Context) {
     }
 
     @Provides
-    fun provideRepository(context: Context): AppRepository {
-        return AppRepositoryImpl(RetrofitClient.getInstance(context).allPersonApi)
+    fun provideMapperFromCourseDtoToCourse(): MapperFromCourseDtoToCourse {
+        return MapperFromCourseDtoToCourseImpl()
     }
 
     @Provides
-    fun provideRoomInstance(): CoursesDataBase {
-        return CoursesDataBase_Impl()
+    fun provideRepository(
+        context: Context,
+        mapperFromCourseDtoToCourse: MapperFromCourseDtoToCourse
+    ): AppRepository {
+        return AppRepositoryImpl(
+            RetrofitClient.getInstance(context).allPersonApi,
+            mapperFromCourseDtoToCourse
+        )
     }
-
 }

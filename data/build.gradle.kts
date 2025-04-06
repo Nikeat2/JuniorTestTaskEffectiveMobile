@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     alias(libs.plugins.kotlin.android)
-    id ("kotlin-kapt")
+    id("kotlin-kapt")
 }
 
 android {
@@ -13,7 +13,7 @@ android {
         minSdk = 26
         testOptions.targetSdk = 35
         //versionCode = 1
-       // versionName = "1.0"
+        // versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -46,14 +46,16 @@ android {
 dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.common)
-    implementation (libs.dagger)
-    kapt (libs.dagger.compiler)
-    implementation (libs.dagger.android)
-    implementation (libs.dagger.android.support)
-    kapt (libs.dagger.android.processor)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.dagger)
+    implementation(project(":domain"))
+    kapt(libs.dagger.compiler)
+    implementation(libs.dagger.android)
+    implementation(libs.dagger.android.support)
+    kapt(libs.dagger.android.processor)
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

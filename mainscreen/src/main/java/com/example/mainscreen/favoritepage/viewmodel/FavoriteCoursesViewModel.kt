@@ -5,10 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.example.data.models.Course
+import com.example.domain.Course
+import com.example.domain.FavoriteRepository
 import com.example.mainscreen.di.AppProvider
-import com.example.mainscreen.room.CoursesDataBase
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class FavoriteCoursesViewModel @Inject constructor(
-    private val room: CoursesDataBase
+    private val favoriteRepository: FavoriteRepository
 ) : ViewModel() {
     private var _coursesListState = MutableStateFlow<List<Course>>(emptyList())
 
@@ -28,13 +27,13 @@ class FavoriteCoursesViewModel @Inject constructor(
 
     fun getLists() {
         viewModelScope.launch(Dispatchers.IO) {
-            _coursesListState.value = room.getCourseDao().getAllCourses()
+            _coursesListState.value = favoriteRepository.getFavoriteCourses()
         }
     }
 
     fun deleteACourse(course: Course) {
         viewModelScope.launch(Dispatchers.IO) {
-            room.getCourseDao().deleteACourse(course)
+            favoriteRepository.deleteACourse(course)
         }
     }
 
@@ -46,7 +45,7 @@ class FavoriteCoursesViewModel @Inject constructor(
                 extras: CreationExtras
             ): T {
                 val appProvider = checkNotNull(extras[APPLICATION_KEY]) as AppProvider
-                return FavoriteCoursesViewModel(appProvider.room) as T
+                return FavoriteCoursesViewModel(appProvider.favoriteRepository) as T
             }
         }
     }

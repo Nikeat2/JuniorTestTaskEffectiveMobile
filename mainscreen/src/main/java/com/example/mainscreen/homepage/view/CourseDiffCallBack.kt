@@ -1,7 +1,8 @@
 package com.example.mainscreen.homepage.view
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.data.models.Course
+import com.example.data.models.CourseEntity
+import com.example.domain.Course
 
 class CourseDiffCallBack : DiffUtil.ItemCallback<Course>() {
 

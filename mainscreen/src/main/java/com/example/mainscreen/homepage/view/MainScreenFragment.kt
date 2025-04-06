@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.data.models.Course
+import com.example.data.room.OnFavoriteButtonClick
+import com.example.domain.Course
 import com.example.mainscreen.basefragment.BaseFragment
 import com.example.mainscreen.databinding.FragmentMainScreenBinding
 import com.example.mainscreen.homepage.viewmodel.HomePageViewModel
-import com.example.mainscreen.homepage.viewmodel.HomePageViewModel_Factory
-import com.example.mainscreen.room.OnFavoriteButtonClick
 import kotlinx.coroutines.launch
 
 class MainScreenFragment : BaseFragment(), OnFavoriteButtonClick {
@@ -55,13 +53,13 @@ class MainScreenFragment : BaseFragment(), OnFavoriteButtonClick {
         }
     }
 
-    override fun onButtonClick(course: Course, position: Int) {
-        course.hasLike = !course.hasLike
+    override fun onButtonClick(courseEntity: Course, position: Int) {
+        courseEntity.hasLike = !courseEntity.hasLike
         adapter.notifyItemChanged(position)
-        if (course.hasLike) {
-            viewModel.saveACourse(course)
+        if (courseEntity.hasLike) {
+            viewModel.saveACourse(courseEntity)
         } else {
-            viewModel.deleteACourse(course)
+            viewModel.deleteACourse(courseEntity)
         }
         viewModel.updateState(adapter.currentList.toList())
         adapter.submitList(viewModel.coursesListState.value)

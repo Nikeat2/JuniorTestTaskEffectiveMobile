@@ -1,12 +1,11 @@
-package com.example.mainscreen.room
+package com.example.data.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.data.models.Course
-import javax.inject.Inject
+import com.example.data.models.CourseEntity
 
 @Database(
-    entities = [Course::class],
+    entities = [CourseEntity::class],
     version = 1
 )
 abstract class CoursesDataBase : RoomDatabase() {

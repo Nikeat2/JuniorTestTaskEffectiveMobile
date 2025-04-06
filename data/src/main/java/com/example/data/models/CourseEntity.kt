@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 const val FAVORITE_COURSES = "FAVORITE_COURSES"
 
 @Entity(tableName = FAVORITE_COURSES)
-data class Course(
+data class CourseEntity(
     @PrimaryKey val id: Int,
     val title: String,
     val text: String,

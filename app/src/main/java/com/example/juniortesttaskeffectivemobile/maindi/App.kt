@@ -2,12 +2,18 @@ package com.example.juniortesttaskeffectivemobile.maindi
 
 import android.app.Application
 import androidx.room.Room
-import com.example.data.repository.AppRepository
-import com.example.domain.AppRepositoryImpl
+import com.example.data.mappers.fromCourseDtoToCourse.MapperFromCourseDtoToCourseImpl
+import com.example.data.mappers.fromCourseEntityToCourse.MapperFromCourseEntityToCourseImpl
+import com.example.data.mappers.fromCourseToCourseEntity.MapperFromCourseToCourseEntityImpl
+import com.example.data.repository.AppRepositoryImpl
+import com.example.data.repository.FavoriteRepositoryImpl
+import com.example.data.room.CoursesDataBase
+import com.example.domain.AppRepository
+import com.example.domain.FavoriteRepository
 import com.example.mainscreen.di.AppProvider
-import com.example.mainscreen.room.CoursesDataBase
 
 class App : Application(), AppProvider {
+
     val appComponent: AppComponent by lazy {
         DaggerAppComponent.builder()
             .application(this)
@@ -16,10 +22,19 @@ class App : Application(), AppProvider {
     }
 
     override val appRepository: AppRepository by lazy {
-        AppRepositoryImpl(appComponent.api())
+        AppRepositoryImpl(appComponent.api(), MapperFromCourseDtoToCourseImpl())
     }
     override val room: CoursesDataBase by lazy {
         Room.databaseBuilder(applicationContext, CoursesDataBase::class.java, "file").build()
+    }
+
+
+    override val favoriteRepository: FavoriteRepository by lazy {
+        FavoriteRepositoryImpl(
+            room,
+            MapperFromCourseEntityToCourseImpl(),
+            MapperFromCourseToCourseEntityImpl()
+        )
     }
 
 }

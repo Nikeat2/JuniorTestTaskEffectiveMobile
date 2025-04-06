@@ -1,5 +1,5 @@
 package com.example.data.models
 
-data class AllCourses (
+data class AllCoursesDto (
     val courses: List<CourseDto>
 )

@@ -10,11 +10,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.data.models.Course
+import com.example.data.room.OnFavoriteButtonClick
+import com.example.domain.Course
 import com.example.mainscreen.databinding.FragmentFavoriteCoursesBinding
 import com.example.mainscreen.favoritepage.viewmodel.FavoriteCoursesViewModel
 import com.example.mainscreen.homepage.view.CoursesListAdapter
-import com.example.mainscreen.room.OnFavoriteButtonClick
 import kotlinx.coroutines.launch
 
 class FavoriteCoursesFragment : Fragment(), OnFavoriteButtonClick {
@@ -46,11 +46,9 @@ class FavoriteCoursesFragment : Fragment(), OnFavoriteButtonClick {
         }
     }
 
-    override fun onButtonClick(course: Course, position: Int) {
-        course.hasLike = !course.hasLike
-        if (!course.hasLike) {
-            viewModel.deleteACourse(course)
-        }
+    override fun onButtonClick(courseEntity: Course, position: Int) {
+        courseEntity.hasLike = false
+        viewModel.deleteACourse(courseEntity)
         viewModel.getLists()
         adapter.notifyItemChanged(position)
         adapter.submitList(viewModel.coursesListState.value)

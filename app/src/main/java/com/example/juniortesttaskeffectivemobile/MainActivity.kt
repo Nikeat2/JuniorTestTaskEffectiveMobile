@@ -13,6 +13,7 @@ import com.example.mainscreen.favoritepage.view.FavoriteCoursesFragment
 import com.example.mainscreen.homepage.model.BottomNavigationController
 import com.example.mainscreen.homepage.view.MainScreenFragment
 import com.example.onboarding.OnBoardingFragment
+import com.google.gson.internal.JavaVersion
 
 class MainActivity : AppCompatActivity(), BottomNavigationController {
 
@@ -74,5 +75,4 @@ class MainActivity : AppCompatActivity(), BottomNavigationController {
     override fun setSelectedItem(itemId: Int) {
         binding.bottomNavigationView.selectedItemId = itemId
     }
-
 }
