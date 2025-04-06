@@ -4,10 +4,13 @@ import android.content.Context
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 
-const val BASE_URL = "https://rickandmortyapi.com/api/"
+const val BASE_URL = "https:mock.url.ru"
 
-class RetrofitClient(private val context: Context) {
+class RetrofitClient @Inject constructor (private val context: Context) {
+
+
     companion object {
 
         private var instance: RetrofitClient? = null

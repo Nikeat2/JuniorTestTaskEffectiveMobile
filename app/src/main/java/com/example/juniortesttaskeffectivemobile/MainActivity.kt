@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import com.example.data.firstusage.AppPreferences
 import com.example.juniortesttaskeffectivemobile.databinding.ActivityMainBinding
 import com.example.mainscreen.favoritepage.view.FavoriteCoursesFragment
 import com.example.mainscreen.homepage.model.BottomNavigationController
 import com.example.mainscreen.homepage.view.MainScreenFragment
 import com.example.onboarding.OnBoardingFragment
+import com.google.gson.internal.JavaVersion
 
 class MainActivity : AppCompatActivity(), BottomNavigationController {
 
@@ -23,29 +25,33 @@ class MainActivity : AppCompatActivity(), BottomNavigationController {
         enableEdgeToEdge()
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val appPreferences = AppPreferences(this)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
         setUpBottomNavigation()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main, OnBoardingFragment.newInstance(R.id.main))
-            .addToBackStack("Activity").commit()
+        if (savedInstanceState == null || appPreferences.isFirstLaunch()) {
+            appPreferences.setLaunched()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main, OnBoardingFragment.newInstance(R.id.main))
+                .addToBackStack("Activity").commit()
+        } else {
+            navigateTo(MainScreenFragment.newInstance(), "main fragment")
+        }
     }
 
     private fun setUpBottomNavigation() {
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigationPointHome -> {
-                    item.icon?.setTint(resources.getColor(R.color.green))
-                    item.title
-                    navigateTo(MainScreenFragment.newInstance())
+                    navigateTo(MainScreenFragment.newInstance(), "main fragment")
                     true
                 }
 
                 R.id.navigationPointFavorites -> {
-                    navigateTo(FavoriteCoursesFragment.newInstance())
+                    navigateTo(FavoriteCoursesFragment.newInstance(), "favorite fragment")
                     true
                 }
 
@@ -54,21 +60,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationController {
                     false
                 }
             }
-
         }
     }
 
     override fun showBottomNavigation(show: Boolean) {
-        binding.bottomNavigationView.visibility = View.VISIBLE
+        binding.bottomNavigationView.visibility = if (show) View.VISIBLE else View.GONE
     }
 
-    override fun navigateTo(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
+    override fun navigateTo(fragment: Fragment, tag: String) {
+        supportFragmentManager.beginTransaction().addToBackStack(tag)
             .replace(R.id.main, fragment).commit()
     }
 
     override fun setSelectedItem(itemId: Int) {
         binding.bottomNavigationView.selectedItemId = itemId
     }
-
 }

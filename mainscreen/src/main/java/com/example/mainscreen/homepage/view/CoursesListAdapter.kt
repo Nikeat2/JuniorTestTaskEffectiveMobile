@@ -10,15 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.domain.Course
 import com.example.mainscreen.R
-import com.example.mainscreen.homepage.model.Course
+import com.example.data.room.OnFavoriteButtonClick
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class CoursesListAdapter :
+class CoursesListAdapter(private val onFavoriteButtonClick: OnFavoriteButtonClick) :
     ListAdapter<Course, CoursesListAdapter.CourseViewHolder>(CourseDiffCallBack()) {
 
-    class CourseViewHolder(view: View) : ViewHolder(view) {
+    inner class CourseViewHolder(view: View) : ViewHolder(view) {
         val favoriteButton: ImageButton = view.findViewById(R.id.favoriteButton)
         val courseRate: TextView = view.findViewById(R.id.courseRateTextView)
         val courseStartDate: TextView = view.findViewById(R.id.courseStartDate)
@@ -26,6 +27,12 @@ class CoursesListAdapter :
         val courseText: TextView = view.findViewById(R.id.courseText)
         val coursePrice: TextView = view.findViewById(R.id.coursePrice)
         val coursePicture: ImageView = view.findViewById(R.id.courseImageView)
+
+        init {
+            favoriteButton.setOnClickListener {
+                onFavoriteButtonClick.onButtonClick(currentList[adapterPosition], adapterPosition)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CourseViewHolder {
@@ -55,7 +62,7 @@ class CoursesListAdapter :
         return try {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val outputFormat =
-                SimpleDateFormat("d MMMM yyyy", Locale("ru")) // "ru" для русских названий месяцев
+                SimpleDateFormat("d MMMM yyyy", Locale("ru"))
 
             val date = inputFormat.parse(this) ?: return this
             outputFormat.format(date)

@@ -1,4 +1,4 @@
-package com.example.mainscreen.homepage.model
+package com.example.domain
 
 data class Course(
     val id: Int,
@@ -7,6 +7,7 @@ data class Course(
     val price: String,
     val rate: String,
     val startDate: String,
-    val hasLike: Boolean,
+    var hasLike: Boolean,
     val publishDate: String
 )
+

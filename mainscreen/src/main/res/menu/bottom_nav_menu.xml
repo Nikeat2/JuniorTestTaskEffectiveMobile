@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigationPointHome"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home_page" />
+
+    <item
+        android:id="@+id/navigationPointFavorites"
+        android:icon="@drawable/favorite_icon"
+        android:title="@string/favorite" />
+
+    <item
+        android:id="@+id/navigationPointAccount"
+        android:icon="@drawable/account_icon"
+        android:title="@string/account" />
+
+</menu>
